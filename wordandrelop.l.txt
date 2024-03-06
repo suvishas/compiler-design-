@@ -1,0 +1,26 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+
+[[:alpha:]]+    { printf("Word: %s\n", yytext); }
+"=="            { printf("Relational Operator: %s\n", yytext); }
+"<"             { printf("Relational Operator: %s\n", yytext); }
+">"             { printf("Relational Operator: %s\n", yytext); }
+"<="            { printf("Relational Operator: %s\n", yytext); }
+">="            { printf("Relational Operator: %s\n", yytext); }
+"!="            { printf("Relational Operator: %s\n", yytext); }
+
+.               /* Ignore other characters */
+
+%%
+
+int yywrap() {
+    return 1; // Indicate that there are no more input files
+}
+
+int main() {
+    yylex();
+    return 0;
+}

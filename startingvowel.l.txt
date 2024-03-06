@@ -1,0 +1,23 @@
+%{
+#include <stdio.h>
+#include <string.h>
+%}
+
+%%
+[aeiouAEIOU][a-zA-Z]*   {
+                            if (strncasecmp(yytext, "elephant", 8) == 0) {
+                                printf("%s\n", yytext);
+                            }
+                        }
+.                        ;  /* Ignore all other characters */
+%%
+
+int yywrap() {
+    return 1;
+}
+
+int main() {
+    yylex();
+    return 0;
+}
+
